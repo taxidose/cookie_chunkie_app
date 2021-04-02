@@ -1,19 +1,44 @@
-<MainGrid>
+<CookieButton@Button>
+    #size_hint_max_x: 300
+    #size_hint_max_y: 500
+    background_normal: "triplechoc.png"
+    background_down: "cookieandcream.png"
+    font_name: 'Impact'
+    color:
+
+<MainGrid>:
+#GridLayout:
+    cols: 1
     canvas.before:
-        Color:
-            rgb: (0.33, 0.20 , 0.13)
         Rectangle:
+            source: 'bg.png'
             pos: self.pos
             size: self.size
 
+    AsyncImage:
+        source: "https://cookie-chunkie.de/wp-content/uploads/2020/10/Cookie-Chunkie-Logo_slogan1-e1616420036119.png"
+
     GridLayout:
-        cols: 1
-
-        GridLayout:
-            cols: 2
-            Label:
+        cols: 2
+        CookieButton:
+            text: "Info"
 
 
-                text: "test123"
-            TextInput:
-                multiline: False
+        CookieButton:
+            text: "Cookie-Baukasten"
+
+
+        CookieButton:
+            text: "PRESS HERE"
+
+
+        CookieButton:
+            text: "PRESS HERE"
+
+
+
+
+
+
+
+
