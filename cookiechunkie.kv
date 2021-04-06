@@ -1,40 +1,128 @@
+WindowManager:
+    MainWindow:
+    InfoWindow:
+    BaukastenWindow:
+
+
 <CookieButton@Button>
     #size_hint_max_x: 300
     #size_hint_max_y: 500
     background_normal: "triplechoc.png"
     background_down: "cookieandcream.png"
-    font_name: 'Impact'
+    font_name: "Impact"
     color:
 
-<MainGrid>:
-#GridLayout:
-    cols: 1
-    canvas.before:
-        Rectangle:
-            source: 'bg.png'
-            pos: self.pos
-            size: self.size
+<IngredientButton@Button>
 
-    AsyncImage:
-        source: "https://cookie-chunkie.de/wp-content/uploads/2020/10/Cookie-Chunkie-Logo_slogan1-e1616420036119.png"
 
+<MainWindow>:
+    name: "main"
     GridLayout:
-        cols: 2
-        CookieButton:
-            text: "Info"
+        cols: 1
+        canvas.before:
+            Rectangle:
+                source: "bg.png"
+                pos: self.pos
+                size: self.size
 
 
-        CookieButton:
-            text: "Cookie-Baukasten"
+
+        AsyncImage:
+            source: "https://cookie-chunkie.de/wp-content/uploads/2020/10/Cookie-Chunkie-Logo_slogan1-e1616420036119.png"
+
+        GridLayout:
+            cols: 2
+            CookieButton:
+                text: "Info"
+                on_release:
+                    app.root.current = "info"
+                    root.manager.transition.direction = "right"
 
 
-        CookieButton:
-            text: "PRESS HERE"
+            CookieButton:
+                text: "Cookie-Baukasten"
+                on_release:
+                    app.root.current = "baukasten"
+                    root.manager.transition.direction = "right"
 
 
-        CookieButton:
-            text: "PRESS HERE"
+            CookieButton:
+                text: "PRESS HERE"
 
+
+            CookieButton:
+                text: "PRESS HERE"
+
+
+<InfoWindow>:
+    name: "info"
+    GridLayout:
+        cols: 1
+        canvas.before:
+            Rectangle:
+                source: "bg.png"
+                pos: self.pos
+                size: self.size
+
+        #AsyncImage:
+            #source: "https://cookie-chunkie.de/wp-content/uploads/2020/10/Cookie-Chunkie-Logo_slogan1-e1616420036119.png"
+
+        BoxLayout:
+            orientation: "vertical"
+
+
+
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "top"
+
+                Button:
+                    background_normal: "logo.png"
+                    background_down: "logo.png"
+                    on_release:
+                        app.root.current = "main"
+                        root.manager.transition.direction = "left"
+
+                    size_hint_max: 300, 200
+
+            Label:
+                size: self.texture_size
+                size_hint: None, None
+                text: "Das ist Tobi: \nAls Koch arbeitete er in den besten Sterne-Restaurants Deutschlands und erlernte so das spannende Spiel mit auserwählten Zutaten und Aromen. \nAuf seiner kulinarischen Entdeckungsreise durch die USA traf er erstmals auf etwas, das er so in Deutschland bisher noch nicht kannte:perfekte softbaked Cookies – weich, saftig, cremig und schokoladig! Wir alle kennen diese staubtrockenen industriell hergestellten Kekse, aber das ist nicht annähernd das gleiche Geschmackserlebnis, wie in einen “geilen” Cookie zu beißen! So war also die Idee für Cookie Chunkie geboren: Wie der Name schon verrät, dreht sich bei uns alles um Cookies. Mit viel Liebe entwickeln wir seit August 2017 unsere Cookie-Kreationen im Herzen Nürnbergs. Dabei achten wir sehr auf Qualität und Nachhaltigkeit: Wir verwenden nur beste Zutaten, soweit es möglich ist, natürlich aus der Region; gerührt und gebacken wird mit Ökostrom! 100% handgemacht, 100% Liebe!"
+            AsyncImage:
+                source: "https://cookie-chunkie.de/wp-content/uploads/2020/11/portrait-tobi.jpg"
+
+
+<BaukastenWindow>:
+
+    name: "baukasten"
+    GridLayout:
+        cols: 1
+        canvas.before:
+            Rectangle:
+                source: "bg.png"
+                pos: self.pos
+                size: self.size
+
+        #AsyncImage:
+            #source: "https://cookie-chunkie.de/wp-content/uploads/2020/10/Cookie-Chunkie-Logo_slogan1-e1616420036119.png"
+
+        GridLayout:
+            cols: 2
+
+        Button:
+            text: "test"
+
+
+            on_release:
+                root.add_ingredient("choclate")
+
+        Button:
+            text: "checkout"
+
+
+            on_release:
+                root.logout_baukasten()
 
 
 
